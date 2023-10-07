@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/09/07 13:33:25.000.517,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2PCH1.h</Transaction>
+    <Transaction>2023/09/07 13:33:25.000.527,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File2.cpp</Transaction>
+    <Transaction>2023/09/07 16:45:27.000.418,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2.cbproj</Transaction>
+    <Transaction>2023/09/11 21:51:33.000.881,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2.cbproj</Transaction>
+    <Transaction>2023/09/11 21:51:36.000.292,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2.cbproj</Transaction>
+    <Transaction>2023/09/19 00:44:50.000.449,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\CMemoria\Project1.cbproj</Transaction>
+    <Transaction>2023/09/19 00:44:50.000.435,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project2PCH1.h=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\CMemoria\Project1PCH1.h</Transaction>
+    <Transaction>2023/09/19 00:44:54.000.295,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\CMemoria\Project1.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\CMemoria\Project1.cbproj</Transaction>
+    <Transaction>2023/09/19 00:45:14.000.465,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File1.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File2.cpp</Transaction>
+    <Transaction>2023/09/19 00:45:14.000.458,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File2.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2023/09/19 00:46:26.000.827,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File2.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2023/09/19 00:46:26.000.822,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File1.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File2.cpp</Transaction>
+    <Transaction>2023/09/19 00:47:07.000.543,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\CMemoria\File1.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\File2.cpp</Transaction>
+    <Transaction>2023/10/01 19:31:14.000.410,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Project1.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Estructura de Datos 2-2023.cbproj</Transaction>
+    <Transaction>2023/10/01 19:31:14.000.399,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Project1PCH1.h=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Estructura de Datos 2-2023PCH1.h</Transaction>
+    <Transaction>2023/10/01 19:31:17.000.426,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Estructura de Datos 2-2023.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Estructura de Datos 2-2023.cbproj</Transaction>
+    <Transaction>2023/10/01 19:32:00.000.526,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\main.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\File1.cpp</Transaction>
+    <Transaction>2023/10/01 19:35:33.000.691,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\CMemoria.cpp</Transaction>
+    <Transaction>2023/10/01 22:44:58.000.819,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\CMemoria.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\CMemoria.cpp</Transaction>
+    <Transaction>2023/10/02 00:06:30.000.862,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\CMemoria.h=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\SMemoria.h</Transaction>
+    <Transaction>2023/10/02 01:07:00.000.978,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\SMlista.h</Transaction>
+    <Transaction>2023/10/02 01:13:52.000.190,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Vlista.h</Transaction>
+    <Transaction>2023/10/02 10:56:03.000.115,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\SMpolinomio.h</Transaction>
+    <Transaction>2023/10/02 11:05:59.000.958,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Lista SM\Lpolinomio.h</Transaction>
+    <Transaction>2023/10/02 22:46:17.535,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1\Polinomio Vector\Vpolinomio.h</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -1,0 +1,102 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#include <SMemoria.h>
+#include <SMlista.h>
+#include <SMLpolinomio.h>
+using namespace std;
+
+SMemoria memoria;
+SMlista lis(memoria);
+SMLpolinomio pol(lis);
+
+int menu_sel() {
+	int sel;
+	cout << "\nRealice su seleccion...\n";
+	while (true) {
+	if (cin >> sel) {
+		break;
+	}
+	cout << "Entrada invalida, intente de nuevo...\n";
+	cin.sync();
+	cin.clear();
+	}
+	return sel;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	bool run = true;
+	while (run) {
+		system("CLS");
+		cout << "Proyecto 4 (Lista)\n\nSeleccione una operacion\n\n1) Crear memoria\n2) Pedir espacio\n3) Liberar espacio\n4) Crear polinomio\n5) Poner termino";
+		cout <<	"\n6) Mostrar polinomio\n7) Derivar\n8) Salir\n";
+		switch (menu_sel()) {
+
+		case 1: {
+			memoria.crear();
+			break;
+			}
+
+		case 2: {
+			string tmp;
+			system("CLS");
+			cout << "Que espacio desea reservar? [var1,var2,var3,...]";
+			cin >> tmp;
+			memoria.new_espacio(tmp);
+			break;
+			}
+
+		case 3: {
+			int tmp;
+			system("CLS");
+			cout << "Que direccion desea liberar?";
+			cin >> tmp;
+			memoria.delete_espacio(tmp);
+			break;
+			}
+
+		case 4: {
+			pol.crear();
+			break;
+			}
+
+		case 5: {
+			int co;
+			int ex;
+			system("CLS");
+			cout << "Coeficiente del termino que desea insertar\n\n";
+			cin >> co;
+			cout << "Exponente del termino que desea insertar\n\n";
+			cin >> ex;
+			pol.poner_termino(co, ex);
+			break;
+			}
+
+		case 6: {
+			pol.mostrar();
+			system("pause");
+			break;
+			}
+
+		case 7: {
+			pol.derivar();
+			system("pause");
+			break;
+			}
+
+		case 8: {
+			run = false;
+			break;
+			}
+
+		case 6604: {
+			cout << endl;
+            memoria.mostrar();
+			system("pause");
+			break;
+			}
+		}
+	}
+}
