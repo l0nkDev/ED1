@@ -4,12 +4,12 @@
 #include <tchar.h>
 #include <SMemoria.h>
 #include <SMlista.h>
-#include <SMLpolinomio.h>
+#include <Lpolinomio.h>
 using namespace std;
 
 SMemoria memoria;
 SMlista lis(memoria);
-SMLpolinomio pol(lis);
+Lpolinomio pol(lis);
 
 int menu_sel() {
 	int sel;

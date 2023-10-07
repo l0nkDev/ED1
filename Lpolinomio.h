@@ -6,7 +6,7 @@
 #pragma once
 using namespace std;
 
-class SMLpolinomio {
+class Lpolinomio {
 	private:
 
 		SMlista &Pol;
@@ -51,7 +51,7 @@ class SMLpolinomio {
 
 	public:
 
-		SMLpolinomio::SMLpolinomio(SMlista& L) : Pol(L) {};
+		Lpolinomio::Lpolinomio(SMlista& L) : Pol(L) {};
 
 		void crear() {
 			Pol.crear();
@@ -136,7 +136,7 @@ class SMLpolinomio {
 			}
 		}
 
-		void suma(SMLpolinomio p1, SMLpolinomio p2) {
+		void suma(Lpolinomio p1, Lpolinomio p2) {
 			int ex;
 			int co;
 			crear();
@@ -152,7 +152,7 @@ class SMLpolinomio {
 			}
 		}
 
-		void resta(SMLpolinomio p1, SMLpolinomio p2) {
+		void resta(Lpolinomio p1, Lpolinomio p2) {
 			int ex;
 			int co;
 			crear();
@@ -168,7 +168,7 @@ class SMLpolinomio {
 			}
 		}
 
-		void multiplicacion(SMLpolinomio p1, SMLpolinomio p2) {
+		void multiplicacion(Lpolinomio p1, Lpolinomio p2) {
 			int ex;
 			int co;
 			int ex1;

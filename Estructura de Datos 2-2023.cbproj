@@ -115,6 +115,9 @@
             <BuildOrder>0</BuildOrder>
             <PCH>true</PCH>
         </PCHCompile>
+        <None Include="Lpolinomio.h">
+            <BuildOrder>6</BuildOrder>
+        </None>
         <CppCompile Include="main.cpp">
             <BuildOrder>1</BuildOrder>
         </CppCompile>
@@ -123,9 +126,6 @@
         </CppCompile>
         <None Include="SMlista.h">
             <BuildOrder>3</BuildOrder>
-        </None>
-        <None Include="SMLpolinomio.h">
-            <BuildOrder>6</BuildOrder>
         </None>
         <None Include="SMpolinomio.h">
             <BuildOrder>5</BuildOrder>
