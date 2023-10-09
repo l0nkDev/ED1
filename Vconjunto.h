@@ -110,8 +110,16 @@ class Vconjunto {
 			}
 		}
 
+		void vaciar() {
+			int elem;
+			while (cardinal() != 0) {
+				elem = muestrea();
+				suprime(elem);
+			}
+        }
+
 		void inter(Vconjunto& A, Vconjunto& B) {
-			crear();
+			vaciar();
 			int elem;
 			while (A.cardinal() != 0) {
 				elem = A.muestrea();
@@ -121,5 +129,6 @@ class Vconjunto {
 			A.suprime(elem);
 			B.suprime(elem);
 			}
+			B.vaciar();
 		}
 };

@@ -92,7 +92,7 @@ class SMemoria {
 
 		void delete_espacio(int dir) {
 			int x = dir;
-			while (MEM[x].link != -1) {
+			while (MEM[x].link != nulo && x != nulo) {
 				x=MEM[x].link;
 			}
 			MEM[x].link = Libre;

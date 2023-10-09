@@ -2,18 +2,18 @@
 #include <sstream>
 #include <string>
 #include <tchar.h>
-#include <Vlista.h>
+#include <SMlista.h>
 #pragma once
 using namespace std;
 
 class Lconjunto {
 	private:
-		Vlista& elem;
+		SMlista& elem;
 
 	public:
 		int nulo = elem.nulo;
 
-		Lconjunto(Vlista& L): elem(L) {
+		Lconjunto(SMlista& L): elem(L) {
 			srand((unsigned) time(NULL));
 		}
 
@@ -140,8 +140,16 @@ class Lconjunto {
 			}
 		}
 
+		void vaciar() {
+			int elem;
+			while (cardinal() != 0) {
+				elem = muestrea();
+				suprime(elem);
+			}
+        }
+
 		void inter(Lconjunto& A, Lconjunto& B) {
-			crear();
+			vaciar();
 			int elem;
 			while (A.cardinal() != 0) {
 				elem = A.muestrea();
@@ -151,5 +159,6 @@ class Lconjunto {
 			A.suprime(elem);
 			B.suprime(elem);
 			}
+			B.vaciar();
 		}
 };

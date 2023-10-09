@@ -7,15 +7,13 @@
 #include <Lpolinomio.h>
 #include <Vconjunto.h>
 #include <Lconjunto.h>
+#include <SMconjunto.h>
 using namespace std;
 
 SMemoria mem;
-SMlista lisA(mem);
-SMlista lisB(mem);
-SMlista lisC(mem);
-SMconjunto A(lisA);
-SMconjunto B(lisB);
-SMconjunto C(lisC);
+SMconjunto A(mem);
+SMconjunto B(mem);
+SMconjunto C(mem);
 
 int menu_sel() {
 	int sel;
@@ -83,7 +81,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				switch (ans) {
 
 					default: {
-						cout << "Selección inválida/n/n";
+						cout << "SelecciÃ³n invÃ¡lida/n/n";
 						system("pause");
 						break;
 					}
@@ -113,7 +111,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				switch (ans) {
 
 					default: {
-						cout << "Selección inválida/n/n";
+						cout << "SelecciÃ³n invÃ¡lida/n/n";
 						system("pause");
 						break;
 					}
