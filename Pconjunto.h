@@ -2,35 +2,34 @@
 #include <sstream>
 #include <string>
 #include <tchar.h>
-#include <SMemoria.h>
 #pragma once
 using namespace std;
 
-class SMconjunto {
+struct nodo {
+	int dato;
+	nodo* sig;
+	int link;
+};
+
+class Pconjunto {
 	private:
 		int cant;
-		int PtrConj;
-		SMemoria& m;
+		nodo* PtrConj;
 
 	public:
-		int nulo = m.nulo;
-
-		SMconjunto(SMemoria& L): m(L) {
-			srand((unsigned) time(NULL));
-		}
 
 		void crear() {
 			cant = 0;
-			PtrConj = nulo;
+			PtrConj = NULL;
 		}
 
 		void inserta(int e) {
-			int dir;
+			nodo* dir;
 			if (!pertenece(e)) {
-				dir = m.new_espacio("dato,sig");
-				if (dir != nulo) {
-					m.poner_dato(dir, "->dato", e);
-					m.poner_dato(dir, "->sig", PtrConj);
+				dir = new nodo;
+				if (dir != NULL) {
+					dir->dato = e;
+					dir->sig = PtrConj;
 					PtrConj = dir;
 					cant++;
 				}
@@ -38,22 +37,22 @@ class SMconjunto {
 		}
 
 		void suprime(int e) {
-			int dir = nulo;
-			int pc = PtrConj;
+			nodo* dir = NULL;
+			nodo* pc = PtrConj;
 			if (pertenece(e)) {
-				while (pc != nulo) {
-					if (m.obtener_dato(pc, "->dato") == e) {
+				while (pc != NULL) {
+					if (pc->dato == e) {
 						dir = pc;
-						pc = nulo;
-						m.delete_espacio(dir);
+						pc = NULL;
+						delete dir;
 						cant--;
 					} else {
-						pc = m.obtener_dato(pc, "->sig");
+						pc = pc->sig;;
 					}
 				}
 			}
 			if (cardinal() == 0) {
-                PtrConj = nulo;
+				PtrConj = NULL;
 			}
 		}
 
@@ -67,13 +66,13 @@ class SMconjunto {
 
 		bool pertenece(int e) {
 			bool resp = false;
-			int pc = PtrConj;
-			while (pc != nulo) {
-				if (m.obtener_dato(pc, "->dato") == e) {
+			nodo* pc = PtrConj;
+			while (pc != NULL) {
+				if (pc->dato == e) {
 					resp = true;
-					pc = nulo;
+					pc = NULL;
 				} else {
-					pc = m.obtener_dato(pc, "->sig");
+					pc = pc->sig;
 				}
 			}
 			return resp;
@@ -82,15 +81,15 @@ class SMconjunto {
 
 		int ordinal(int e) {
 			int cont = 0;
-			int pc = PtrConj;
+			nodo* pc = PtrConj;
 			int resp = 0;
-			while (pc != nulo) {
+			while (pc != NULL) {
 				resp++;
-				if (m.obtener_dato(pc, "->dato")) {
+				if (pc->dato == e) {
 					return resp;
-					pc = nulo;
+					pc = NULL;
 				} else {
-					pc = m.obtener_dato(pc, "->sig");
+					pc = pc->sig;
 				}
 			}
 			return 0;
@@ -99,17 +98,17 @@ class SMconjunto {
 		int muestrea() {
 			int lugar = 0;
 			int lugarBuscado;
-			int pc = PtrConj;
-			int elemento = nulo;
+			nodo* pc = PtrConj;
+			int elemento = -1;
 			if (cant > 0) {
 				lugarBuscado = 1 + rand() % cant;
-				while (pc != nulo) {
+				while (pc != NULL) {
 					lugar++;
 					if (lugar == lugarBuscado) {
-						elemento = m.obtener_dato(pc, "->dato");
-						pc = nulo;
+						elemento = pc->dato;
+						pc = NULL;
 					} else {
-						pc = m.obtener_dato(pc, "->sig");
+						pc = pc->sig;
 					}
 				}
 			}
@@ -119,15 +118,15 @@ class SMconjunto {
 		void mostrar() {
 			string tmp = "{ ";
 			int ctd = 0;
-			int dir = PtrConj;
+			nodo* dir = PtrConj;
 			if (!vacio()) {
-				while (dir != nulo) {
+				while (dir != NULL) {
 					if (ctd != 0) {
 						tmp += ", ";
 					}
-					tmp += to_string(m.obtener_dato(dir, "->dato"));
+					tmp += to_string(dir->dato);
 					ctd++;
-					dir = m.obtener_dato(dir, "->sig");
+					dir = dir->sig;
 				}
 			}
 			system("CLS");
@@ -135,7 +134,7 @@ class SMconjunto {
 			system("pause");
 		}
 
-		void uni(SMconjunto& A, SMconjunto& B) {
+		void uni(Pconjunto& A, Pconjunto& B) {
 			crear();
 			int elem;
 			while (A.cardinal() != 0) {
@@ -158,7 +157,7 @@ class SMconjunto {
 			}
         }
 
-		void inter(SMconjunto& A, SMconjunto& B) {
+		void inter(Pconjunto& A, Pconjunto& B) {
 			vaciar();
 			int elem;
 			while (A.cardinal() != 0) {

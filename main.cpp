@@ -7,15 +7,14 @@
 #include <Lpolinomio.h>
 #include <Vconjunto.h>
 #include <Lconjunto.h>
+#include <Pconjunto.h>
+#include <SMconjunto.h>
 using namespace std;
 
 SMemoria mem;
-SMlista lisA(mem);
-SMlista lisB(mem);
-SMlista lisC(mem);
-SMconjunto A(lisA);
-SMconjunto B(lisB);
-SMconjunto C(lisC);
+Pconjunto A;
+Pconjunto B;
+Pconjunto C;
 
 int menu_sel() {
 	int sel;

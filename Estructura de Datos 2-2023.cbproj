@@ -124,6 +124,9 @@
         <CppCompile Include="main.cpp">
             <BuildOrder>1</BuildOrder>
         </CppCompile>
+        <None Include="Pconjunto.h">
+            <BuildOrder>11</BuildOrder>
+        </None>
         <None Include="SMconjunto.h">
             <BuildOrder>10</BuildOrder>
         </None>
