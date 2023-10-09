@@ -115,6 +115,9 @@
             <BuildOrder>0</BuildOrder>
             <PCH>true</PCH>
         </PCHCompile>
+        <None Include="Lconjunto.h">
+            <BuildOrder>9</BuildOrder>
+        </None>
         <None Include="Lpolinomio.h">
             <BuildOrder>6</BuildOrder>
         </None>
@@ -129,6 +132,9 @@
         </None>
         <None Include="SMpolinomio.h">
             <BuildOrder>5</BuildOrder>
+        </None>
+        <None Include="Vconjunto.h">
+            <BuildOrder>8</BuildOrder>
         </None>
         <None Include="Vlista.h">
             <BuildOrder>4</BuildOrder>

@@ -3,13 +3,18 @@
 #include <string>
 #include <tchar.h>
 #include <SMemoria.h>
-#include <SMlista.h>
+#include <Vlista.h>
 #include <Lpolinomio.h>
+#include <Vconjunto.h>
+#include <Lconjunto.h>
 using namespace std;
 
-SMemoria memoria;
-SMlista lis(memoria);
-Lpolinomio pol(lis);
+Vlista lisA;
+Vlista lisB;
+Vlista lisC;
+Lconjunto A(lisA);
+Lconjunto B(lisB);
+Lconjunto C(lisC);
 
 int menu_sel() {
 	int sel;
@@ -30,117 +35,108 @@ int _tmain(int argc, _TCHAR* argv[])
 	bool run = true;
 	while (run) {
 		system("CLS");
-		cout << "Laboratorio\n\nSeleccione una operacion\n\n1) Crear memoria\n2) Pedir espacio\n3) Liberar espacio\n4) Crear lista\n5) Poner dir inicio\n6) Mostrar lista";
-		cout <<	"\n7) Mostrar memoria\n8) Crear polinomio\n9) Poner termino\n10) Mostrar polinomio\n11) Evaluar\n12) Salir\n";
+		cout << "Laboratorio\n\nSeleccione una operacion\n\n1) Crear conj A\n2) Crear conj B\n3) Crear conj C\n4) Insertar elemento\n5) Mostrar conjunto\n6) Unir A U B y poner en C el resultado";
+		cout <<	"\n7) Intersectar A ^ B y poner en C el resultado\n8) Salir\n";
 		switch (menu_sel()) {
 
-		case 1: {
-			memoria.crear();
-			break;
+			case 1: {
+				A.crear();
+				break;
 			}
 
-		case 2: {
-			string tmp;
-			system("CLS");
-			cout << "Que espacio desea reservar? [var1,var2,var3]\n\n";
-			cin >> tmp;
-			memoria.new_espacio(tmp);
-			break;
+			case 2: {
+				B.crear();
+				break;
 			}
 
-		case 3: {
-			int tmp;
-			system("CLS");
-			cout << "Que dir desea liberar?\n\n";
-			cin >> tmp;
-			memoria.delete_espacio(tmp);
-			break;
+			case 3: {
+				C.crear();
+				break;
 			}
 
-		case 4: {
-			lis.crear();
-			break;
+			case 4: {
+				int ans;
+				int e;
+				string A_ans = "A";
+				string B_ans = "B";
+				string C_ans = "C";
+				system("CLS");
+				cout << "Que dato desea insertar\n\n";
+				cin >> e;
+				cout << "\n\nSeleccione el conjunto A (1), B (2) o C (3).\n\n";
+				cin >> ans;
+				switch (ans) {
+
+					default: {
+						cout << "Selección inválida/n/n";
+						system("pause");
+						break;
+					}
+
+					case 1: {
+						A.inserta(e);
+						break;
+					}
+
+					case 2: {
+						B.inserta(e);
+						break;
+					}
+					case 3: {
+						C.inserta(e);
+						break;
+					}
+				}
+				break;
 			}
 
-		case 5: {
-			int tmp;
-			system("CLS");
-			cout << "Que dato desea insertar?\n\n";
-			cin >> tmp;
-			lis.inserta(lis.primero(), tmp);
-			break;
+			case 5: {
+				int ans;
+				system("CLS");
+				cout << "\n\nSeleccione el conjunto A (1), B (2) o C (3).\n\n";
+				cin >> ans;
+				switch (ans) {
+
+					default: {
+						cout << "Selección inválida/n/n";
+						system("pause");
+						break;
+					}
+
+					case 1: {
+						A.mostrar();
+						break;
+					}
+
+					case 2: {
+						B.mostrar();
+						break;
+					}
+					case 3: {
+						C.mostrar();
+						break;
+					}
+				}
+				break;
 			}
 
-		case 6: {
-			system("CLS");
-			lis.mostrar();
-			system("pause");
-			break;
+			case 6: {
+				C.uni(A, B);
+				break;
 			}
 
-		case 7: {
-			system("CLS");
-			memoria.mostrar();
-			system("pause");
-			break;
+			case 7: {
+				C.inter(A, B);
+				break;
 			}
 
-		case 8: {
-			pol.crear();
-			memoria.crear();
-			break;
+			case 8: {
+				run = false;
+				break;
 			}
 
-		case 9: {
-			int co;
-			int ex;
-			system("CLS");
-			cout << "Coeficiente del termino que desea insertar\n\n";
-			cin >> co;
-			cout << "Exponente del termino que desea insertar\n\n";
-			cin >> ex;
-			pol.poner_termino(co, ex);
-			break;
-			}
-
-		case 10: {
-			pol.mostrar();
-			system("pause");
-			break;
-			}
-
-		case 11: {
-			int tmp;
-			string temP;
-			system("CLS");
-			cout << "que x desea evaluar\n\n";
-			cin >> tmp;
-			temP = to_string(pol.evaluar(tmp));
-			system("CLS");
-			cout << endl << endl << temP << endl;
-			system("pause");
-			break;
-			}
-
-		case 12: {
-			run = false;
-			break;
-			}
-
-		case 6604: {
-			int tmp;
-			string temP;
-			system("CLS");
-			memoria.mostrar();
-			system("pause");
-			lis.mostrar();
-			cout << "que x desea evaluar\n\n";
-			cin >> tmp;
-			temP = to_string(pol.evaluar(tmp));
-			system("CLS");
-			cout << endl << endl << temP << endl;
-			system("pause");
-			break;
+			case 6604: {
+				break;
 			}
 		}
 	}

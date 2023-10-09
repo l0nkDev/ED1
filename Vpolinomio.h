@@ -2,7 +2,6 @@
 #include <sstream>
 #include <string>
 #include <tchar.h>
-#include <SMemoria.h>
 #pragma once
 using namespace std;
 
