@@ -40,20 +40,28 @@ class SMconjunto {
 		void suprime(int e) {
 			int dir = nulo;
 			int pc = PtrConj;
+			int pa = nulo;
 			if (pertenece(e)) {
 				while (pc != nulo) {
 					if (m.obtener_dato(pc, "->dato") == e) {
+						cant--;
+						if (cardinal() == 0) {
+							PtrConj = nulo;
+						} else {
+							if (pc == PtrConj) {
+							PtrConj = m.obtener_dato(pc, "->sig");
+							}
+						}
 						dir = pc;
+						m.poner_dato(pa, "->sig",m.obtener_dato(pc, "->sig"));
 						pc = nulo;
 						m.delete_espacio(dir);
-						cant--;
+
 					} else {
+						pa = pc;
 						pc = m.obtener_dato(pc, "->sig");
 					}
 				}
-			}
-			if (cardinal() == 0) {
-                PtrConj = nulo;
 			}
 		}
 
@@ -119,15 +127,17 @@ class SMconjunto {
 		void mostrar() {
 			string tmp = "{ ";
 			int ctd = 0;
-			int dir = PtrConj;
+			int num = 0;
 			if (!vacio()) {
-				while (dir != nulo) {
-					if (ctd != 0) {
+				while (ctd < cardinal()) {
+					if (tmp != "{ ") {
 						tmp += ", ";
 					}
-					tmp += to_string(m.obtener_dato(dir, "->dato"));
-					ctd++;
-					dir = m.obtener_dato(dir, "->sig");
+					if (pertenece(num)) {
+						tmp += to_string(num);
+						ctd++;
+					}
+					num++;
 				}
 			}
 			system("CLS");
@@ -136,7 +146,7 @@ class SMconjunto {
 		}
 
 		void uni(SMconjunto& A, SMconjunto& B) {
-			crear();
+			vaciar();
 			int elem;
 			while (A.cardinal() != 0) {
 				elem = A.muestrea();

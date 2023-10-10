@@ -12,9 +12,9 @@
 using namespace std;
 
 SMemoria mem;
-Pconjunto A;
-Pconjunto B;
-Pconjunto C;
+SMconjunto A(mem);
+SMconjunto B(mem);
+SMconjunto C(mem);
 
 int menu_sel() {
 	int sel;
@@ -150,9 +150,13 @@ int _tmain(int argc, _TCHAR* argv[])
 			}
 
 			case 6604: {
-                mem.mostrar();
+				mem.mostrar();
 				system("pause");
 				break;
+			}
+
+			case 6605: {
+				A.suprime(5);
 			}
 		}
 	}

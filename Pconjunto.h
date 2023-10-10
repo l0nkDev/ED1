@@ -39,20 +39,27 @@ class Pconjunto {
 		void suprime(int e) {
 			nodo* dir = NULL;
 			nodo* pc = PtrConj;
+			nodo* pa = NULL;
 			if (pertenece(e)) {
 				while (pc != NULL) {
 					if (pc->dato == e) {
+						cant--;
+						if (cardinal() == 0) {
+							PtrConj == NULL;
+						} else {
+							if (pc == PtrConj) {
+								PtrConj = pc->sig;
+							}
+						}
 						dir = pc;
+						pa->sig = pc->sig;
 						pc = NULL;
 						delete dir;
-						cant--;
 					} else {
+						pa = pc;
 						pc = pc->sig;;
 					}
 				}
-			}
-			if (cardinal() == 0) {
-				PtrConj = NULL;
 			}
 		}
 
@@ -135,7 +142,7 @@ class Pconjunto {
 		}
 
 		void uni(Pconjunto& A, Pconjunto& B) {
-			crear();
+			vaciar();
 			int elem;
 			while (A.cardinal() != 0) {
 				elem = A.muestrea();
