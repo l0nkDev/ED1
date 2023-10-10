@@ -39,7 +39,7 @@ class Pconjunto {
 		void suprime(int e) {
 			nodo* dir = NULL;
 			nodo* pc = PtrConj;
-			nodo* pa = NULL;
+			nodo* pa = pc;
 			if (pertenece(e)) {
 				while (pc != NULL) {
 					if (pc->dato == e) {
