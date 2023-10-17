@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-polinomio poli;
+Ppolinomio poli;
 
 int menu_sel() {
 	int sel;
@@ -35,7 +35,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "1) Crear polinomio\n";
 		cout <<	"2) Poner termino\n";
 		cout <<	"3) Mostrar grado\n";
-		cout <<	"4) Salir\n";
+		cout <<	"4) Mostrar Polinomio\n";
+		cout <<	"5) Salir\n";
 		cout << "\n";
 		switch (menu_sel()) {
 
@@ -63,17 +64,19 @@ int _tmain(int argc, _TCHAR* argv[])
 				break;
 			}
 
-			case 4: {
+			case 5: {
 				run = false;
 				break;
 			}
 
-			case 6604: {
+			case 4: {
+				poli.mostrar();
+				system("pause");
 				break;
 			}
 
 			case 6605: {
-                break;
+				break;
 			}
 		}
 	}

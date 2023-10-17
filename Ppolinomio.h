@@ -5,20 +5,20 @@
 #pragma once
 using namespace std;
 
-struct Nodo {
+struct NodoP {
 	int Co;
 	int Ex;
-	Nodo* Next;
+	NodoP* Next;
 };
 
-class polinomio {
+class Ppolinomio {
 	private:
-		Nodo* PPoliRFV;
+		NodoP* PPolRFV;
 		int nt;
 
-		Nodo* BuscarExponente(int exp) {
-			Nodo* dir = PPoliRFV;
-			Nodo* dirEx;
+		NodoP* BuscarExponente(int exp) {
+			NodoP* dir = PPolRFV;
+			NodoP* dirEx;
 			if (dir != NULL) {
 				dirEx = NULL;
 				while (dir != NULL && dirEx == NULL) {
@@ -34,9 +34,9 @@ class polinomio {
 			}
 		}
 
-		Nodo* BuscarTerminoN(int I) {
-			Nodo* dir = PPoliRFV;
-			Nodo* dirTer;
+		NodoP* BuscarTerminoN(int I) {
+			NodoP* dir = PPolRFV;
+			NodoP* dirTer;
 			int nut;
 			if (dir != NULL) {
 				dirTer = NULL;
@@ -53,17 +53,17 @@ class polinomio {
 				cout << "buscarterminon: no existe terminos";
 				return NULL;
 			}
-        }
+		}
 
 	public:
 
-		Nodo* fin() {
-			Nodo* x;
-			Nodo* PtrFin;
+		NodoP* fin() {
+			NodoP* x;
+			NodoP* PtrFin;
 			if (EsCero()) {
 				cout << "fin: lista vacia";
 			} else {
-				x = PPoliRFV;
+				x = PPolRFV;
 				while (x != NULL) {
 					PtrFin = x;
 					x = x->Next;
@@ -72,16 +72,16 @@ class polinomio {
 			}
 		}
 
-		Nodo* anterior(Nodo* p) {
-			Nodo* x;
-			Nodo; ant;
+		NodoP* anterior(NodoP* p) {
+			NodoP* x;
+			NodoP* ant;
 			if (EsCero()) {
 				cout << "anterior: lista vacia";
 			} else {
-				if (p == PPoliRFV) {
+				if (p == PPolRFV) {
 					cout << "anterior: direccion primera err";
 				} else {
-					x = PPoliRFV;
+					x = PPolRFV;
 					ant = NULL;
 					while (x != NULL) {
 						if (x == p) {
@@ -94,15 +94,15 @@ class polinomio {
 			}
 		}
 
-		void suprime(Nodo* p) {
-			Nodo* x;
-			Nodo* ant;
+		void suprime(NodoP* p) {
+			NodoP* x;
+			NodoP* ant;
 			if (nt == 0) {
 				cout << "suprime: lista vacia";
 			}
-			if (p == PPoliRFV) {
-				x = PPoliRFV;
-				PPoliRFV = PPoliRFV->Next;
+			if (p == PPolRFV) {
+				x = PPolRFV;
+				PPolRFV = PPolRFV->Next;
 			} else {
 				ant = anterior(p);
 				if (p == fin()) {
@@ -117,7 +117,7 @@ class polinomio {
 
 		void crear() {
 			nt = 0;
-			PPoliRFV = NULL;
+			PPolRFV = NULL;
 		}
 
 		bool EsCero() {
@@ -125,7 +125,7 @@ class polinomio {
 		}
 
 		int grado() {
-			Nodo* dir = PPoliRFV;
+			NodoP* dir = PPolRFV;
 			int MaxG;
 			if (dir != NULL) {
 				MaxG = dir->Ex;
@@ -143,7 +143,7 @@ class polinomio {
 		}
 
 		int coeficiente(int exp) {
-			Nodo* dir = BuscarExponente(exp);
+			NodoP* dir = BuscarExponente(exp);
 			if (dir != NULL) {
 				return dir->Co;
 			} else {
@@ -153,7 +153,7 @@ class polinomio {
 		}
 
 		void asignarcoeficiente(int coef, int exp) {
-			Nodo* dir = BuscarExponente(exp);
+			NodoP* dir = BuscarExponente(exp);
 			if (dir != NULL) {
 				dir->Co = coef;
 				if (coef == 0) {
@@ -165,16 +165,42 @@ class polinomio {
 		}
 
 		void poner_termino(int coef, int exp) {
-			Nodo* existe = BuscarExponente(exp);
-			Nodo* aux;
+			NodoP* existe = BuscarExponente(exp);
+			NodoP* aux;
+			int nttmp = nt;
 			if (existe == NULL) {
-				aux = new Nodo;
+				aux = new NodoP;
 				if (aux != NULL) {
+					if (nt == 0 || PPolRFV->Ex < exp){
 					aux->Co = coef;
 					aux->Ex = exp;
-					aux->Next = PPoliRFV;
-					PPoliRFV = aux;
+					aux->Next = PPolRFV;
+					PPolRFV = aux;
 					nt ++;
+					} else {
+						NodoP* tmp = PPolRFV;
+						NodoP* ant = PPolRFV;
+						while (tmp != NULL) {
+							if (tmp->Ex < exp && ant->Ex > exp) {
+								ant->Next = aux;
+								aux->Co = coef;
+								aux->Ex = exp;
+								aux->Next = tmp;
+								nt++;
+								tmp = NULL;
+							} else {
+							ant = tmp;
+							tmp = tmp->Next;
+							}
+						}
+						if (nttmp == nt) {
+							fin()->Next = aux;
+							aux->Ex = exp;
+							aux->Co = coef;
+							aux->Next = NULL;
+							nt++;
+						}
+					}
 				} else {
 					cout << "poner_termino: error espacio memoria";
 				}
@@ -183,6 +209,7 @@ class polinomio {
 				existe->Co = nuevocoef;
 				if (nuevocoef == 0) {
 					suprime(existe);
+					nt--;
 				}
 			}
 		}
@@ -191,8 +218,8 @@ class polinomio {
 			return nt;
 		}
 
-		Nodo* exponente(int nroter) {
-			Nodo* dir = BuscarTerminoN(nroter);
+		int exponente(int nroter) {
+			NodoP* dir = BuscarTerminoN(nroter);
 			if (dir != NULL) {
 				return dir->Ex;
 			} else {
@@ -204,7 +231,7 @@ class polinomio {
 		void mostrar() {
 			int ex;
 			int co;
-			int i = PPoliRFV;
+			NodoP* i = PPolRFV;
 			string tmp = "";
 			while (i != NULL) {
 				ex = i->Ex;
