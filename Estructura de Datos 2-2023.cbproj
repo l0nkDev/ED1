@@ -133,6 +133,9 @@
         <None Include="Plista.h">
             <BuildOrder>12</BuildOrder>
         </None>
+        <None Include="Ppolinomio.h">
+            <BuildOrder>14</BuildOrder>
+        </None>
         <None Include="SMconjunto.h">
             <BuildOrder>10</BuildOrder>
         </None>
