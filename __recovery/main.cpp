@@ -41,14 +41,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	while (run) {
 		system("CLS");
 		cout << "Laboratorio\n\nSeleccione una operacion\n\n";
-		cout <<	"1) Crear conj A\n";
-		cout <<	"2) Crear conj B\n";
-		cout <<	"3) Crear conj C\n";
-		cout <<	"4) Insertar elemento\n";
-		cout <<	"5) Mostrar conjunto\n";
-		cout <<	"6) Unir A U B y poner en C el resultado\n";
-		cout <<	"7) Intersectar A ^ B y poner en C el resultado\n";
-		cout <<	"8) Salir\n";
+		cout <<	"1) Crear listas\n";
+		cout <<	"2) Mostrar listas\n";
+		cout <<	"3) Crear conj A\n";
+		cout <<	"4) Crear conj B\n";
+		cout <<	"5) Crear conj C\n";
+		cout <<	"6) Insertar elemento\n";
+		cout <<	"7) Mostrar conjunto\n";
+		cout <<	"8) Unir A U B y poner en C el resultado\n";
+		cout <<	"9) Intersectar A ^ B y poner en C el resultado\n";
+		cout <<	"10) Salir\n";
 		cout << "\n";
 		switch (menu_sel()) {
 
@@ -91,9 +93,6 @@ int _tmain(int argc, _TCHAR* argv[])
 			case 6: {
 				int ans;
 				int e;
-				string A_ans = "A";
-				string B_ans = "B";
-				string C_ans = "C";
 				system("CLS");
 				cout << "Que dato desea insertar\n\n";
 				cin >> e;
@@ -102,7 +101,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				switch (ans) {
 
 					default: {
-						cout << "Selección inválida/n/n";
+						cout << "SelecciÃ³n invÃ¡lida/n/n";
 						system("pause");
 						break;
 					}
@@ -132,7 +131,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				switch (ans) {
 
 					default: {
-						cout << "Selección inválida/n/n";
+						cout << "SelecciÃ³n invÃ¡lida/n/n";
 						system("pause");
 						break;
 					}

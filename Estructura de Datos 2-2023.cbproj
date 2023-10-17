@@ -127,6 +127,12 @@
         <None Include="Pconjunto.h">
             <BuildOrder>11</BuildOrder>
         </None>
+        <None Include="PLconjunto.h">
+            <BuildOrder>13</BuildOrder>
+        </None>
+        <None Include="Plista.h">
+            <BuildOrder>12</BuildOrder>
+        </None>
         <None Include="SMconjunto.h">
             <BuildOrder>10</BuildOrder>
         </None>
