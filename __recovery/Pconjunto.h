@@ -137,41 +137,4 @@ class Pconjunto {
 			}
 			cout << tmp + " }";
 		}
-
-		void uni(Pconjunto& A, Pconjunto& B) {
-			vaciar();
-			int elem;
-			while (A.cardinal() != 0) {
-				elem = A.muestrea();
-				inserta(elem);
-				A.suprime(elem);
-			}
-			while (B.cardinal() != 0) {
-				elem = B.muestrea();
-				inserta(elem);
-				B.suprime(elem);
-			}
-		}
-
-		void vaciar() {
-			int elem;
-			while (cardinal() != 0) {
-				elem = muestrea();
-				suprime(elem);
-			}
-		}
-
-		void inter(Pconjunto& A, Pconjunto& B) {
-			vaciar();
-			int elem;
-			while (A.cardinal() != 0) {
-				elem = A.muestrea();
-				if (B.pertenece(elem)) {
-					inserta(elem);
-					B.suprime(elem);
-				}
-			A.suprime(elem);
-			}
-			B.vaciar();
-		}
 };

@@ -40,7 +40,7 @@ int main()
 		cout << endl << "Conjunto B: ";
 		B.mostrar();
 		cout << endl;
-		cout << "Introduzca un numero a insertar al conjunto A o 'sig' para continuar la ejecución.\n\n";
+		cout << "Introduzca un numero a insertar al conjunto A o 'sig' para continuar la ejecuciÃ³n.\n\n";
 		cin >> elem;
 		cin.sync();
 		cin.clear();
@@ -61,7 +61,7 @@ int main()
 		cout << endl << "Conjunto B: ";
 		B.mostrar();
 		cout << endl;
-		cout << "Introduzca un numero a insertar al conjunto B o 'sig' para continuar la ejecución.\n\n";
+		cout << "Introduzca un numero a insertar al conjunto B o 'sig' para continuar la ejecuciÃ³n.\n\n";
 		cin >> elem;
 		cin.sync();
 		cin.clear();
