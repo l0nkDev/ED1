@@ -25,7 +25,7 @@ class Pconjunto {
 
 		void inserta(int e) {
 			nodo* dir;
-			if (!pertenece(e)) {
+			if (vacio() || !pertenece(e)) {
 				dir = new nodo;
 				if (dir != NULL) {
 					dir->dato = e;
@@ -39,13 +39,13 @@ class Pconjunto {
 		void suprime(int e) {
 			nodo* dir = NULL;
 			nodo* pc = PtrConj;
-			nodo* pa = pc;
+			nodo* pa = new nodo;
 			if (pertenece(e)) {
 				while (pc != NULL) {
 					if (pc->dato == e) {
 						cant--;
 						if (cardinal() == 0) {
-							PtrConj == NULL;
+							PtrConj = NULL;
 						} else {
 							if (pc == PtrConj) {
 								PtrConj = pc->sig;
@@ -57,7 +57,7 @@ class Pconjunto {
 						delete dir;
 					} else {
 						pa = pc;
-						pc = pc->sig;;
+						pc = pc->sig;
 					}
 				}
 			}

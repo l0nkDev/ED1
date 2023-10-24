@@ -130,10 +130,11 @@ class SMconjunto {
 			int num = 0;
 			if (!vacio()) {
 				while (ctd < cardinal()) {
-					if (tmp != "{ ") {
-						tmp += ", ";
-					}
+
 					if (pertenece(num)) {
+						if (tmp != "{ ") {
+							tmp += ", ";
+						}
 						tmp += to_string(num);
 						ctd++;
 					}

@@ -207,10 +207,10 @@ class Vpolinomio {
 			}
 		}
 
-		int evaluar(int x) {
+		float evaluar(float x) {
 			int i = 1;
-			int sum = 0;
-			int pow;
+			float sum = 0;
+			float pow;
 			while (i <= nt) {
 				pow = x;
 				if (VE[i] > 0) {
@@ -220,10 +220,10 @@ class Vpolinomio {
 				} else {
 					pow = 1;
 				}
-				sum += VC[i]*pow;
+				sum += pow * VC[i];
 				i++;
 			}
-            return sum;
+			return sum;
 		}
 
 		void debug(){
