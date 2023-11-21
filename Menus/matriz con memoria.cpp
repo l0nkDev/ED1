@@ -2,10 +2,12 @@
 #include <sstream>
 #include <string>
 #include <cstdio>
-#include "Matrices/VmatrizCSR.h"
+#include "Matrices/SMmatrizCF.h"
+#include "SMemoria.h"
 using namespace std;
 
-VmatrizCSR matrizdispersa;
+SMemoria mem;
+SMmatrizCF matrizdispersa(mem);
 
 string mostrar() {
 	string str = "";
@@ -39,20 +41,53 @@ int main()
 	while (run) {
 		system("CLS");
 		cout << "Laboratorio\n\nSeleccione una operacion\n\n";
-		cout << "1) Crear matriz\n";
-		cout << "2) Dimensionar matriz\n";
-		cout << "3) Asignar valor por defecto\n";
-		cout << "4) Poner dato\n";
-		cout << "5) Mostrar matriz\n";
-		cout << "6) salir\n";
+		cout << "1) Crear memoria\n";
+		cout << "2) Pedir espacio\n";
+		cout << "3) Liberar espacio\n";
+		cout << "4) Mostrar memoria\n";
+		cout << "5) Crear matriz\n";
+		cout << "6) Dimensionar matriz\n";
+		cout << "7) Asignar valor por defecto\n";
+		cout << "8) Poner dato\n";
+		cout << "9) Mostrar matriz\n";
+		cout << "10) salir\n";
 		switch (menu_sel()) {
 
 			case 1: {
-				matrizdispersa.crear();
+				mem.crear();
 				break;
 			}
 
 			case 2: {
+				string tmp;
+				system("CLS");
+				cout << "Que espacios desea reservar? [var1,var2,var3]\n\n";
+				cin >> tmp;
+				mem.new_espacio(tmp);
+				break;
+			}
+
+			case 3: {
+				int tmp;
+				system("CLS");
+				cout << "Que espacios desea liberar?\n\n";
+				cin >> tmp;
+				mem.delete_espacio(tmp);
+				break;
+			}
+
+			case 4: {
+				mem.mostrar();
+				system("pause");
+				break;
+			}
+
+			case 5: {
+				matrizdispersa.crear();
+				break;
+			}
+
+			case 6: {
 				int f;
 				int c;
 				system("CLS");
@@ -65,7 +100,7 @@ int main()
 				break;
 			}
 
-			case 3: {
+			case 7: {
 				int valor;
 				system("CLS");
 				cout << "Cual valor será repetido?\n\n";
@@ -74,7 +109,7 @@ int main()
 				break;
 			}
 
-			case 4: {
+			case 8: {
 				int f;
 				int c;
 				int d;
@@ -91,17 +126,17 @@ int main()
 				break;
 			}
 
-			case 5: {
+			case 9: {
 				system("CLS");
 				cout << mostrar() + "\n";
 				system("pause");
 				break;
 			}
 
-			case 6: {
+			case 10: {
 				run = false;
 				break;
-            }
+			}
 
 
 			case 6604: {

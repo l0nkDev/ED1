@@ -21,8 +21,8 @@ string operator*(const string& s, unsigned int n) {
 
 class SMemoria {
 	private:
-		int MAX = 30;
-		NodoM MEM[30];
+		static const int MAX = 300;
+		NodoM MEM[MAX+1];
 		int Libre;
 	public:
 

@@ -58,8 +58,8 @@
         <SanitizedProjectName>Estructura_de_Datos_2-2023</SanitizedProjectName>
         <Multithreaded>true</Multithreaded>
         <_TCHARMapping>char</_TCHARMapping>
-        <IncludePath>..\..\;ED1\CMemoria\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>..\..\;ED1\CMemoria\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>Matrices\;Listas\;Menus\;Conjuntos\;Polinomios\;..\..\;ED1\CMemoria\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>Matrices\;Listas\;Menus\;Conjuntos\;Polinomios\;..\..\;ED1\CMemoria\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindcompvclsmp;bindcompvclwinx;bindengine;CloudService;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDAC;FireDACADSDriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACIBDriver;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;FireDACSqliteDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;tethering;vcl;vclactnband;vcldb;vcldsnap;vcledge;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
@@ -111,52 +111,73 @@
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="Conjuntos\Lconjunto.h">
+            <BuildOrder>7</BuildOrder>
+        </None>
+        <None Include="Conjuntos\Pconjunto.h">
+            <BuildOrder>8</BuildOrder>
+        </None>
+        <None Include="Conjuntos\PLconjunto.h">
+            <BuildOrder>9</BuildOrder>
+        </None>
+        <None Include="Conjuntos\SMconjunto.h">
+            <BuildOrder>10</BuildOrder>
+        </None>
+        <None Include="Conjuntos\Vconjunto.h">
+            <BuildOrder>11</BuildOrder>
+        </None>
         <PCHCompile Include="Estructura de Datos 2-2023PCH1.h">
             <BuildOrder>0</BuildOrder>
             <PCH>true</PCH>
         </PCHCompile>
-        <None Include="Lconjunto.h">
-            <BuildOrder>9</BuildOrder>
+        <None Include="Listas\Plista.h">
+            <BuildOrder>13</BuildOrder>
         </None>
-        <None Include="Lpolinomio.h">
-            <BuildOrder>6</BuildOrder>
+        <None Include="Listas\SMlista.h">
+            <BuildOrder>14</BuildOrder>
+        </None>
+        <None Include="Listas\Vlista.h">
+            <BuildOrder>15</BuildOrder>
         </None>
         <CppCompile Include="main.cpp">
             <BuildOrder>1</BuildOrder>
         </CppCompile>
-        <None Include="Pconjunto.h">
-            <BuildOrder>11</BuildOrder>
+        <None Include="Matrices\Pmatriz1D.h">
+            <BuildOrder>16</BuildOrder>
         </None>
-        <None Include="PLconjunto.h">
-            <BuildOrder>13</BuildOrder>
+        <None Include="Matrices\PmatrizCF.h">
+            <BuildOrder>18</BuildOrder>
         </None>
-        <None Include="Plista.h">
+        <None Include="Matrices\SMmatriz1D.h">
+            <BuildOrder>20</BuildOrder>
+        </None>
+        <None Include="Matrices\SMmatrizCF.h">
+            <BuildOrder>21</BuildOrder>
+        </None>
+        <None Include="Matrices\VmatrizCOO.h">
+            <BuildOrder>17</BuildOrder>
+        </None>
+        <None Include="Matrices\VmatrizCSR.h">
+            <BuildOrder>19</BuildOrder>
+        </None>
+        <CppCompile Include="Menus\laboratorio virtual.cpp">
             <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <None Include="Polinomios\Lpolinomio.h">
+            <BuildOrder>3</BuildOrder>
         </None>
-        <None Include="Ppolinomio.h">
-            <BuildOrder>14</BuildOrder>
+        <None Include="Polinomios\Ppolinomio.h">
+            <BuildOrder>4</BuildOrder>
         </None>
-        <None Include="SMconjunto.h">
-            <BuildOrder>10</BuildOrder>
+        <None Include="Polinomios\SMpolinomio.h">
+            <BuildOrder>5</BuildOrder>
+        </None>
+        <None Include="Polinomios\Vpolinomio.h">
+            <BuildOrder>6</BuildOrder>
         </None>
         <CppCompile Include="SMemoria.h">
             <BuildOrder>2</BuildOrder>
         </CppCompile>
-        <None Include="SMlista.h">
-            <BuildOrder>3</BuildOrder>
-        </None>
-        <None Include="SMpolinomio.h">
-            <BuildOrder>5</BuildOrder>
-        </None>
-        <None Include="Vconjunto.h">
-            <BuildOrder>8</BuildOrder>
-        </None>
-        <None Include="Vlista.h">
-            <BuildOrder>4</BuildOrder>
-        </None>
-        <None Include="Vpolinomio.h">
-            <BuildOrder>7</BuildOrder>
-        </None>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
