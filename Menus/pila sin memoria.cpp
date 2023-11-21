@@ -3,25 +3,28 @@
 #include <string>
 #include <cstdio>
 #include "SMemoria.h"
-#include "Pilas/Vpila.h"
+#include "Pilas/Lpila.h"
+#include "Listas/Vlista.h"
 using namespace std;
 
-Vpila pila;
+Vlista lis;
+Lpila pila(lis);
 
 void mostrar() {
-	Vpila tmp;
+	Vlista tlis;
+	Lpila tmp(tlis);
 	string space = " ";
 	string aux;
 	string str;
 	tmp.crear();
 	if (!pila.vacia()) {
-		str = "-------\n | ";
+		str = "---------\n |";
         while (!pila.vacia()) {
 			aux = to_string(pila.cima());
 			tmp.meter(pila.cima());
-			str += pila.sacar() + space*(1) + "|\n |---|\n";
+			str += to_string(pila.sacar()) + space*(5 - aux.length()) + "|\n |-----|\n";
 			if (!pila.vacia()) {
-				str += " | ";
+				str += " |";
 			}
 		}
 		while (!tmp.vacia()) {
@@ -67,7 +70,7 @@ int main()
 			}
 
 			case 2: {
-				char e;
+				int e;
 				system("CLS");
 				cout << "Que elemento insertar a la pila?\n\n";
 				cin >> e;
@@ -83,7 +86,8 @@ int main()
 			case 4: {
 				run = false;
 				break;
-			}
+            }
+
 
 			case 6604: {
 				break;

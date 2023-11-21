@@ -2,17 +2,27 @@
 #include <sstream>
 #include <string>
 #include <cstdio>
-#include "Matrices/VmatrizCSR.h"
+#include "SMemoria.h"
+#include "Matrices/VmatrizCOO.h"
 using namespace std;
 
-VmatrizCSR matrizdispersa;
+VmatrizCOO matrizdispersa;
 
 string mostrar() {
+	string space = " ";
 	string str = "";
+	int num = 0;
+    for (int i = 1; i <= matrizdispersa.dimension_fila(); i++) {
+		for (int j = 1; j <= matrizdispersa.dimension_columna(); j++) {
+			if (num < to_string(matrizdispersa.elemento(i, j)).length()) {
+				num = to_string(matrizdispersa.elemento(i, j)).length();
+            }
+		}
+	}
 	for (int i = 1; i <= matrizdispersa.dimension_fila(); i++) {
 		str += "| ";
 		for (int j = 1; j <= matrizdispersa.dimension_columna(); j++) {
-			str += to_string(matrizdispersa.elemento(i, j)) + " ";
+			str += to_string(matrizdispersa.elemento(i, j)) + space*(num+1 - to_string(matrizdispersa.elemento(i, j)).length());
 		}
 		str += "|\n";
 	}
@@ -68,7 +78,7 @@ int main()
 			case 3: {
 				int valor;
 				system("CLS");
-				cout << "Cual valor será repetido?\n\n";
+				cout << "Cual valor ser  repetido?\n\n";
 				cin >> valor;
 				matrizdispersa.definir_valor_repetido(valor);
 				break;
