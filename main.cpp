@@ -2,10 +2,10 @@
 #include <sstream>
 #include <string>
 #include <cstdio>
-#include "Matrices/VmatrizCSR.h"
+#include "Matrices/VmatrizCOO.h"
 using namespace std;
 
-VmatrizCSR matrizdispersa;
+VmatrizCOO matrizdispersa;
 
 string mostrar() {
 	string str = "";
