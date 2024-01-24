@@ -1,0 +1,358 @@
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "SMmatrizCF.h"
+#include "Ppila.h"
+#include <iostream>
+#include <tchar.h>
+#include <fstream>
+#include <sstream>
+#include <string>
+#pragma once
+using namespace std;
+
+class Juego {
+	private:
+		Graphics::TBitmap* bichoBMP = new Graphics::TBitmap;
+		Graphics::TBitmap* paredBMP = new Graphics::TBitmap;
+		Graphics::TBitmap* fondoBMP = new Graphics::TBitmap;
+		Graphics::TBitmap* fruta1BMP = new Graphics::TBitmap;
+		Graphics::TBitmap* fruta2BMP = new Graphics::TBitmap;
+		string mapas = "../../maps/plano.txt";
+		static const char bicho = "b"[0];
+		static const char fondo = "f"[0];
+		static const char pared = "p"[0];
+		static const char paredd = "d"[0];
+		static const char paredr = "r"[0];
+		static const char fruta1 = "g"[0];
+		static const char fruta2 = "q"[0];
+		static const char blanco = " "[0];
+		static const int DimPieza = 32;
+		SMmatrizCF& mat;
+		Ppila pil;
+		int fruta = 0;
+		int score = 0;
+		int Cx = 0;
+		int Cy = 0;
+		int Df = 0;
+		int Dc = 0;
+		int Bx = 0;
+		int By = 0;
+
+	public:
+
+		Juego(SMmatrizCF& m): mat(m) {
+			bichoBMP->LoadFromFile("../../assets/bicho.bmp");
+			paredBMP->LoadFromFile("../../assets/pared1.bmp");
+			fondoBMP->LoadFromFile("../../assets/fondo1.bmp");
+			fruta1BMP->LoadFromFile("../../assets/fruta1.bmp");
+			fruta2BMP->LoadFromFile("../../assets/fruta2.bmp");
+            pil.crear();
+		}
+
+		void retroceder(TCanvas* pant) {
+			int x;
+			pil.sacar(x);
+			switch (x) {
+				case "w"[0]: mv_u(pant, false); break;
+				case "a"[0]: mv_l(pant, false); break;
+				case "s"[0]: mv_d(pant, false); break;
+				case "d"[0]: mv_r(pant, false); break;
+			}
+        }
+
+		void load_map(int lvl) {
+			while (!pil.vacia()) {
+				pil.sacar();
+            }
+			bool lvl_found = false; bool lvl_loaded = false; score = 0;
+			string str = " ";
+			ifstream file(mapas);
+			for (int i = 1; i <= Df; i++) {
+				for (int j = 0; j <= Dc; j++) {
+					mat.poner(i, j, fondo);
+                }
+			}
+			while (std::getline(file, str)) {
+				if (lvl_found && !lvl_loaded) {
+					if (str[0] == "{"[0]) {
+						lvl_loaded = true;
+					} else {
+						Dc = str.length() > Dc ? str.length() : Dc;
+						Df++;
+						mat.dimensionar(Df, Dc);
+						for (int i = 0; i < str.length(); i++) {
+							Bx = str[i] == bicho ? i+1 : Bx;
+							By = str[i] == bicho ? Df  : By;
+							mat.poner(Df, i+1, str[i]);
+							if (mat.elemento(Df, i+1) == fruta1 || mat.elemento(Df, i+1) == fruta2) {
+								fruta++;
+							}
+						}
+                    }
+				}
+				if ( !lvl_found && str[0] == "{"[0] &&  lvl == stoi(str.substr(1, str.length() - 1))) {
+					lvl_found = true;
+					std::getline(file, str);
+					for (int i = 0; i < str.length(); i++) {
+						if (str[i] == ","[0]) {
+							Cy = stoi(str.substr(0, i));
+							Cx = stoi(str.substr(i+1, str.length()-i));
+						}
+					}
+					Df = 0;
+					Dc = 0;
+				}
+			}
+		}
+
+		void draw_tile(int f, int c, TCanvas* pant) {
+			char tile = mat.elemento(f, c);
+			Graphics::TBitmap* fig = NULL;
+			switch (tile) {
+				case bicho: fig = bichoBMP; break;
+				case pared: fig = paredBMP; break;
+				case paredd: fig = paredBMP; break;
+				case paredr: fig = paredBMP; break;
+				case fondo: fig = fondoBMP; break;
+				case fruta1: fig = fruta1BMP; break;
+				case fruta2: fig = fruta2BMP; break;
+			}
+			int xR = Cx + (c - 1)*DimPieza;
+			int yR = Cy + (f - 1)*DimPieza;
+			pant->Draw(xR, yR, fig);
+		}
+
+		void draw_map(TCanvas* pant) {
+			for (int i = Df != 0 ? 1 : 0; i <= Df; i++) {
+				for (int j = Dc != 0 ? 1 : 0; j <= Dc; j++) {
+					draw_tile(i, j, pant);
+				}
+			}
+			pant->Font->Name = "Segoe UI";
+			pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+		}
+
+		int get_score() {
+			return score;
+        }
+
+		void mv_u(TCanvas* pant, bool ret = true) {
+			char obj_in_next_tile = mat.elemento(By-1, Bx);
+			if (fruta == 0) {
+				Form1->lvl_chooser->Text = IntToStr(StrToInt(Form1->lvl_chooser->Text) + 1);
+				load_map(StrToInt(Form1->lvl_chooser->Text) + 1);
+				Form1->Repaint();
+			} else {
+				if (obj_in_next_tile != pared && obj_in_next_tile != paredd && obj_in_next_tile != paredr && obj_in_next_tile != blanco && By-1 != 0) {
+					switch (obj_in_next_tile) {
+						case fruta1: score += 100; fruta--; break;
+						case fruta2: score += 200; fruta--;break;
+					}
+					if (ret) {pil.meter("s"[0]);}
+					mat.poner(By, Bx, fondo);
+					draw_tile(By, Bx, pant);
+					mat.poner(By-1, Bx, bicho);
+					draw_tile(By-1, Bx, pant);
+					pant->Font->Name = "Segoe UI";
+					pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+					By--;
+				} else {
+					if (obj_in_next_tile == paredr) {
+						mat.poner(By-1, Bx, fondo);
+						draw_tile(By-1, Bx, pant);
+					} else {
+						if (obj_in_next_tile == paredd) {
+							mat.poner(By-1, Bx, paredr);
+						} else {
+							if (obj_in_next_tile == pared) {
+								mat.poner(By-1, Bx, paredd);
+							}
+						}
+					}
+
+					if (obj_in_next_tile == blanco || By-1 == 0) {
+						int i = By;
+						while (i > 1 && mat.elemento(i, Bx) != blanco) {
+							i++;
+						}
+						if (mat.elemento(i, Bx) == blanco) {
+							i--;
+						}
+						if (mat.elemento(i, Bx) != pared) {
+							switch (mat.elemento(By, i)) {
+								case fruta1: score += 100; fruta--; break;
+								case fruta2: score += 200; fruta--; break;
+							}
+							mat.poner(By, Bx, fondo);
+							draw_tile(By, Bx, pant);
+							mat.poner(i, Bx, bicho);
+							draw_tile(i, Bx, pant);
+							pant->Font->Name = "Segoe UI";
+							pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+							By = i;
+						}
+					}
+				}
+			}
+		}
+
+		void mv_d(TCanvas* pant, bool ret = true) {
+			char obj_in_next_tile = mat.elemento(By+1, Bx);
+            if (fruta == 0) {
+				Form1->lvl_chooser->Text = IntToStr(StrToInt(Form1->lvl_chooser->Text) + 1);
+				load_map(StrToInt(Form1->lvl_chooser->Text) + 1);
+				Form1->Repaint();
+			} else {
+				if (obj_in_next_tile != pared && obj_in_next_tile != paredd && obj_in_next_tile != paredr) {
+					switch (obj_in_next_tile) {
+						case fruta1: score += 100; fruta--; break;
+						case fruta2: score += 200; fruta--; break;
+					}
+					if (ret) {pil.meter("w"[0]);}
+					mat.poner(By, Bx, fondo);
+					draw_tile(By, Bx, pant);
+					mat.poner(By+1, Bx, bicho);
+					draw_tile(By+1, Bx, pant);
+					pant->Font->Name = "Segoe UI";
+					pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+					By++;
+				} else {
+					if (obj_in_next_tile == paredr) {
+						mat.poner(By+1, Bx, fondo);
+						draw_tile(By+1, Bx, pant);
+					} else {
+						if (obj_in_next_tile == paredd) {
+							mat.poner(By+1, Bx, paredr);
+						} else {
+							if (obj_in_next_tile == pared) {
+								mat.poner(By+1, Bx, paredd);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		void mv_l(TCanvas* pant, bool ret = true) {
+			char obj_in_next_tile = mat.elemento(By, Bx-1);
+            if (fruta == 0) {
+				Form1->lvl_chooser->Text = IntToStr(StrToInt(Form1->lvl_chooser->Text) + 1);
+				load_map(StrToInt(Form1->lvl_chooser->Text) + 1);
+				Form1->Repaint();
+			} else {
+				if (obj_in_next_tile != pared && obj_in_next_tile != paredd && obj_in_next_tile != paredr && obj_in_next_tile != blanco && Bx-1 != 0) {
+					switch (obj_in_next_tile) {
+						case fruta1: score += 100; fruta--; break;
+						case fruta2: score += 200; fruta--; break;
+					}
+					if (ret) {pil.meter("d"[0]);}
+					mat.poner(By, Bx, fondo);
+					draw_tile(By, Bx, pant);
+					mat.poner(By, Bx-1, bicho);
+					draw_tile(By, Bx-1, pant);
+					pant->Font->Name = "Segoe UI";
+					pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+					Bx--;
+				} else {
+					if (obj_in_next_tile == paredr) {
+						mat.poner(By, Bx-1, fondo);
+						draw_tile(By, Bx-1, pant);
+					} else {
+						if (obj_in_next_tile == paredd) {
+							mat.poner(By, Bx-1, paredr);
+						} else {
+							if (obj_in_next_tile == pared) {
+								mat.poner(By, Bx-1, paredd);
+							}
+						}
+					}
+
+					if (obj_in_next_tile == blanco || Bx-1 == 0) {
+						int i = Bx;
+						while (i < Dc && mat.elemento(By, i) != blanco) {
+							i++;
+						}
+						if (mat.elemento(By, i) == blanco) {
+							i--;
+						}
+						if (mat.elemento(By, i) != pared) {
+							switch (mat.elemento(By, i)) {
+								case fruta1: score += 100; fruta--; break;
+								case fruta2: score += 200; fruta--; break;
+							}
+							mat.poner(By, Bx, fondo);
+							draw_tile(By, Bx, pant);
+							mat.poner(By, i, bicho);
+							draw_tile(By, i, pant);
+							pant->Font->Name = "Segoe UI";
+							pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+							Bx = i;
+						}
+					}
+				}
+			}
+		}
+
+		void mv_r(TCanvas* pant, bool ret = true) {
+			char obj_in_next_tile = mat.elemento(By, Bx+1);
+			if (fruta == 0) {
+				Form1->lvl_chooser->Text = IntToStr(StrToInt(Form1->lvl_chooser->Text) + 1);
+				load_map(StrToInt(Form1->lvl_chooser->Text));
+				Form1->Repaint();
+			} else {
+				if (obj_in_next_tile != pared && obj_in_next_tile != paredd && obj_in_next_tile != paredr && obj_in_next_tile != blanco && Bx != Dc) {
+					switch (obj_in_next_tile) {
+						case fruta1: score += 100; fruta--; break;
+						case fruta2: score += 200; fruta--; break;
+					}
+					if (ret) {pil.meter("a"[0]);}
+					mat.poner(By, Bx, fondo);
+					draw_tile(By, Bx, pant);
+					mat.poner(By, Bx+1, bicho);
+					draw_tile(By, Bx+1, pant);
+					pant->Font->Name = "Segoe UI";
+					pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+					Bx++;
+				} else {
+					if (obj_in_next_tile == paredr) {
+						mat.poner(By, Bx+1, fondo);
+						draw_tile(By, Bx+1, pant);
+					} else {
+						if (obj_in_next_tile == paredd) {
+							mat.poner(By, Bx+1, paredr);
+						} else {
+							if (obj_in_next_tile == pared) {
+								mat.poner(By, Bx+1, paredd);
+							}
+						}
+					}
+
+					if (obj_in_next_tile == blanco || Bx == Dc) {
+						int i = Bx;
+						while (i > 1 && mat.elemento(By, i) != blanco) {
+							i--;
+						}
+						if (mat.elemento(By, i) == blanco) {
+							i++;
+						}
+						if (mat.elemento(By, i) != pared) {
+							switch (mat.elemento(By, i)) {
+								case fruta1: score += 100; fruta--; break;
+								case fruta2: score += 200; fruta--; break;
+							}
+							mat.poner(By, Bx, fondo);
+							draw_tile(By, Bx, pant);
+							mat.poner(By, i, bicho);
+							draw_tile(By, i, pant);
+							pant->Font->Name = "Segoe UI";
+							pant->TextOut(Cx, Cy-20, ("Score: " + to_string(score)).c_str());
+							Bx = i;
+						}
+					}
+				}
+			}
+		}
+};

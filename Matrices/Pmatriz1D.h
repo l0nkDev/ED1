@@ -19,7 +19,6 @@ class Pmatriz1D {
 		int rep;
 		int dimf;
 		int dimc;
-		int nt;
 
 		NodoMat1* buscar(int f, int c) {
 			NodoMat1* aux = PtrMatD;
@@ -58,6 +57,8 @@ class Pmatriz1D {
 
 	public:
 
+		int nt;
+
 		void crear() {
 			PtrMatD = NULL;
 			dimf = 0;
@@ -90,7 +91,7 @@ class Pmatriz1D {
 						x->dato = e;
 						x->sig = PtrMatD;
 						PtrMatD = x;
-						nt ++;
+						nt++;
 					}
 				}
 			} else {
@@ -113,12 +114,16 @@ class Pmatriz1D {
 
 		void definir_valor_repetido(int valor) {
 			rep = valor;
-            NodoMat1* aux = PtrMatD;
+			NodoMat1* aux = PtrMatD;
+			NodoMat1* tmp = NULL;
 			while (aux != NULL) {
 				if (valor == aux->dato) {
-					suprime(aux);
+					tmp = aux;
+					aux = aux->sig;
+					suprime(tmp);
+				} else {
+					aux = aux->sig;
 				}
-				aux = aux->sig;
 			}
 		}
 

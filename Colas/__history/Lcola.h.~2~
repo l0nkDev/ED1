@@ -1,0 +1,37 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#include "Listas/Vlista.h"
+#pragma once
+using namespace std;
+
+class Lcola {
+	private:
+		Vlista& L;
+	public:
+
+		Lcola(Vlista& lis): L(lis) {};
+
+		void crear() {
+			L.crear();
+		}
+
+		bool vacia() {
+			return L.vacia();
+        }
+
+		void meter(int E) {
+			L.inserta_ultimo(E);
+		}
+
+		int sacar() {
+			int E = L.recupera(L.fin());
+			L.suprime(L.fin());
+			return E;
+		}
+
+		int cima() {
+			return L.recupera(L.fin());
+		}
+};

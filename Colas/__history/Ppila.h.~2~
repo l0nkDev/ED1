@@ -1,0 +1,43 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#pragma once
+using namespace std;
+
+class Ppila {
+	private:
+		static const int max = 100;
+		int elementos[max+1];
+		int tope;
+	public:
+
+		void crear() {
+			tope = 0;
+		}
+
+		bool vacia() {
+			return (tope == 0);
+        }
+
+		void meter(int E) {
+			if (tope < max) {
+				tope++;
+				elementos[tope] = E;
+			}
+		}
+
+		int sacar() {
+			if (!vacia()) {
+				return elementos[tope];
+			}
+			return -1;
+		}
+
+		int cima() {
+			if (!vacia()) {
+				return elementos[tope];
+			}
+            return -1;
+        }
+};

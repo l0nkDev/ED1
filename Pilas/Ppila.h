@@ -32,15 +32,21 @@ class Ppila {
 			}
 		}
 
-		int sacar() {
+		void sacar(int &E) {
 			if (!vacia()) {
 				NodoPil* x = tope;
-				int E = tope->elemento;
+				E = tope->elemento;
 				tope = tope->sig;
 				delete x;
-                return E;
 			}
-			return 0;
+		}
+
+		void sacar() {
+			if (!vacia()) {
+				NodoPil* x = tope;
+				tope = tope->sig;
+				delete x;
+			}
 		}
 
 		int cima() {

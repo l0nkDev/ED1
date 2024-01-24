@@ -1,0 +1,40 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#include "Listas/Vlista.h"
+#pragma once
+using namespace std;
+
+class Lcola {
+	private:
+		Vlista& L;
+	public:
+
+		Lcola(Vlista& lis): L(lis) {};
+
+		void crear() {
+			L.crear();
+		}
+
+		bool vacia() {
+			return L.vacia();
+        }
+
+		void poner(int E) {
+			L.inserta(L.primero(), E);
+		}
+
+		void sacar() {
+			L.suprime(L.fin());
+		}
+
+		void sacar(int &E) {
+			E = L.recupera(L.fin());
+			L.suprime(L.fin());
+		}
+
+		int primero() {
+			return L.recupera(L.fin());
+		}
+};

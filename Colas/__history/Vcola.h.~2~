@@ -1,0 +1,55 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#pragma once
+using namespace std;
+
+class Vcola {
+	private:
+		static const int max = 100;
+		int elementos[max+1];
+		int tope;
+	public:
+
+		void crear() {
+			tope = 0;
+			for (int i = 0; i <= max; i++) {
+				elementos[i] = 0;
+			}
+		}
+
+		bool vacia() {
+			return (tope == 0);
+        }
+
+		void poner(char E) {
+			if (tope < max) {
+				tope++;
+				elementos[tope] = E;
+			}
+		}
+
+		int sacar() {
+			if (!vacia()) {
+				tope--;
+				return elementos[tope+1];
+			}
+			return -1;
+		}
+
+		int sacar() {
+			if (!vacia()) {
+				tope--;
+				return elementos[tope+1];
+			}
+			return -1;
+		}
+
+		int primero() {
+			if (!vacia()) {
+				return elementos[tope];
+			}
+            return -1;
+        }
+};

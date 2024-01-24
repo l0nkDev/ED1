@@ -1,0 +1,65 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#pragma once
+using namespace std;
+
+struct NodoCol {
+	int elemento;
+	NodoCol* sig;
+};
+
+class Pcola {
+	private:
+		NodoCol* ini;
+		NodoCol* fin;
+	public:
+
+		void crear() {
+			ini = NULL;
+			fin = NULL;
+		}
+
+		bool vacia() {
+			return (ini == NULL);
+        }
+
+		void poner(int E) {
+			NodoCol* aux = new NodoCol;
+			if (aux != NULL) {
+				aux->elemento = E;
+				aux->sig = NULL;
+				if (vacia()) {
+					ini = aux;
+					fin = aux;
+				} else {
+					fin->sig = aux;
+					fin = aux;
+                }
+			}
+		}
+
+		void sacar(int &E) {
+			if (!vacia()) {
+				E = ini->elemento;
+				NodoCol* x = ini;
+				ini = ini->sig;
+				delete x;
+			}
+		}
+
+		void sacar() {
+			if (!vacia()) {
+				NodoCol* x = ini;
+				ini = ini->sig;
+				delete x;
+			}
+		}
+
+		void primero() {
+			if (!vacia()) {
+				return ini->elemento;
+			}
+		}
+};

@@ -1,0 +1,58 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#pragma once
+using namespace std;
+
+class Vcola {
+	private:
+		static const int max = 7;
+		int V[max + 1];
+		int ini;
+		int fin;
+
+		int siguiente(int dir) {
+			return dir == max ? 0 : dir + 1;
+		}
+
+	public:
+
+		void crear() {
+			fin = -1;
+			ini = 0;
+			for (int i = 0; i <= max; i++) {
+				V[i] = 0;
+			}
+		}
+
+		bool vacia() {
+			return siguiente(fin) == ini;
+		}
+
+		void poner(char E) {
+			if (siguiente(siguiente(fin)) != ini) {
+				fin = siguiente(fin);
+				V[fin] = E;
+			}
+		}
+
+		void sacar() {
+			if (!vacia()) {
+				ini = siguiente(ini);
+			}
+		}
+
+		void sacar(int &E) {
+			if (!vacia()) {
+				E = V[ini];
+				ini = siguiente(ini);
+			}
+		}
+
+		int primero() {
+			if (!vacia()) {
+				return V[ini];
+			}
+		}
+};

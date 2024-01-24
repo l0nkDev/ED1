@@ -1,0 +1,59 @@
+{1
+80, 120
+pppppppppppp   ppppppppppp
+pffffffffffp   pfffffffffp
+pfbfffffffff   ffffffffffp
+pffffffffffp   pfffffffffp
+pffffffffffpppppfffffffffp
+pffffffffffffffffffffffffp
+pfffffffffffffffffffgffffp
+pffffffffffffffffffffffffp
+pffffffffffffffffffffffffp
+pffffffqfffffffffffffffffp
+pffffffffffffffffffffffffp
+pffffffffffffffffffffffffp
+pffffffffffffffffffffffffp
+ffffffffffffffffffffffffff
+pffffffffffffffffffffffffp
+pffffffffffffffffffffffffp
+pppppppppppppppppppppppppp
+{2
+80, 120
+pppppppppppp    ppppppp   
+pffffffffffp    pfffffp   
+pfffffffgffp    pfffffp   
+pffffffffffp    pfffffp   
+pffffffffffppppppfffffp   
+ffbfffpffffffffffffffff   
+pfffffpfffffffffffffffp   
+pfffffpfffffffffffffffp   
+pfffffpfffffffffffffffp   
+pfffffpffppppppppppfffpppp
+pfffffpffffffffffffffffffp
+pfffffpffffffffffffffffffp
+pfffffpfffffffqfffffffqffp
+pfffffpffffffffffffffffffp
+pffffffffffffffffffffffffp
+pffffffffgfffffffffffffffp
+pffffffffffffffffffffffffp
+pffffffffffffffffffffffffp
+pppppppppppppppppppppppppp
+{3
+200, 200
+ppp
+fbf
+ppp
+{4
+200, 200
+pppppppppppp        
+pffffffffffp        
+pffffffffffp        
+pffffffffffp        
+pffffffffffp        
+pffffffffffp        
+pffffffffffp        
+pffffffffffp        
+pffffffffffp        
+pfbffffffffppppppppp
+pffffffffffffffffffp
+pppppppppppppppppppp

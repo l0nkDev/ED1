@@ -1,0 +1,104 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 694
+  ClientWidth = 1362
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  KeyPreview = True
+  OnKeyPress = FormKeyPress
+  OnPaint = FormPaint
+  TextHeight = 15
+  object btn_r: TButton
+    Left = 89
+    Top = 31
+    Width = 75
+    Height = 25
+    Caption = 'Derecha'
+    TabOrder = 0
+    OnClick = btn_rClick
+  end
+  object btn_l: TButton
+    Left = 8
+    Top = 31
+    Width = 75
+    Height = 25
+    Caption = 'Izquierda'
+    TabOrder = 1
+    OnClick = btn_lClick
+  end
+  object btn_u: TButton
+    Left = 8
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Arriba'
+    TabOrder = 2
+    OnClick = btn_uClick
+  end
+  object btn_d: TButton
+    Left = 89
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Abajo'
+    TabOrder = 3
+    OnClick = btn_dClick
+  end
+  object load_lvl: TButton
+    Left = 8
+    Top = 62
+    Width = 41
+    Height = 25
+    Caption = 'Nivel'
+    TabOrder = 4
+    OnClick = load_lvlClick
+  end
+  object lvl_chooser: TEdit
+    Left = 55
+    Top = 62
+    Width = 24
+    Height = 23
+    TabOrder = 5
+    Text = '1'
+  end
+  object show_memory: TButton
+    Left = 1185
+    Top = 661
+    Width = 90
+    Height = 25
+    Caption = 'Act Memoria'
+    TabOrder = 6
+    OnClick = show_memoryClick
+  end
+  object hi_lim: TEdit
+    Left = 1320
+    Top = 662
+    Width = 33
+    Height = 23
+    TabOrder = 7
+    Text = '2000'
+  end
+  object low_lim: TEdit
+    Left = 1281
+    Top = 662
+    Width = 33
+    Height = 23
+    TabOrder = 8
+    Text = '0'
+  end
+  object rewind: TButton
+    Left = 170
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Retroceder'
+    TabOrder = 9
+    OnClick = rewindClick
+  end
+end

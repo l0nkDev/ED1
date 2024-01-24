@@ -1,0 +1,126 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#include "SMemoria.h"
+#pragma once
+using namespace std;
+
+struct NodoMat1 {
+	int fila;
+	int col;
+	int dato;
+    int sig;
+};
+
+class Pmatriz1D {
+	private:
+
+		SMemoria mem;
+		int rep;
+		int dimf;
+		int dimc;
+		int nt;
+
+		int buscar(int f, int c) {
+			int aux = PtrMatD;
+			while (aux != NULL) {
+				if (f == aux->fila && c == aux->col) {
+					break;
+				}
+				aux = aux->sig;
+			}
+			return aux;
+		}
+
+		int anterior(int dir) {
+			int aux = PtrMatD;
+			while (aux != NULL) {
+				if (aux->sig == dir) {
+					break;
+				}
+				aux = aux->sig;
+			}
+			return aux;
+		}
+
+		void suprime(int dir) {
+			if (dir != NULL) {
+				if (dir == PtrMatD) {
+					PtrMatD = dir->sig;
+					delete dir;
+				} else {
+					anterior(dir)->sig = dir->sig;
+					delete dir;
+				}
+				nt--;
+			}
+		}
+
+	public:
+
+		void crear() {
+			PtrMatD = NULL;
+			dimf = 0;
+			dimc = 0;
+			rep = 0;
+			nt = 0;
+		}
+
+		void dimensionar(int nf, int nc) {
+			dimf = nf;
+			dimc = nc;
+		}
+
+		int dimension_fila() {
+			return dimf;
+		}
+
+		int dimension_columna() {
+			return dimc;
+		}
+
+		void poner (int f, int c, int e) {
+			int dir = buscar(f, c);
+			if (dir == NULL) {
+				int x = new NodoMat1;
+				if (x != NULL) {
+					if (e != rep) {
+						x->fila = f;
+						x->col = c;
+						x->dato = e;
+						x->sig = PtrMatD;
+						PtrMatD = x;
+						nt ++;
+					}
+				}
+			} else {
+				dir->dato = e;
+				if (e == rep) {
+					suprime(dir);
+				}
+            }
+		}
+
+		int elemento(int f, int c) {
+			if ((f >= 1 && f <= dimf) && (c >= 1 && c <= dimc)) {
+				int dir = buscar(f, c);
+				if (dir != NULL) {
+					return dir->dato;
+				}
+			}
+			return rep;
+		}
+
+		void definir_valor_repetido(int valor) {
+			rep = valor;
+			int aux = PtrMatD;
+			while (aux != nulo) {
+				if (valor == aux->dato) {
+					suprime(aux);
+				}
+				aux = mem.obtener_dato(aux, "->sig");
+			}
+		}
+
+};

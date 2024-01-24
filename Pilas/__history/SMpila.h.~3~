@@ -1,0 +1,56 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <tchar.h>
+#include "SMemoria.h"
+#pragma once
+using namespace std;
+
+struct NodoPil {
+	int elemento;
+	NodoPil* sig;
+};
+
+class SMpila {
+	private:
+		SMemoria& mem;
+		NodoPil* tope;
+	public:
+
+		SMpila(SMemoria& M): mem(M) {};
+
+		void crear() {
+			tope = NULL;
+		}
+
+		bool vacia() {
+			return (tope == NULL);
+        }
+
+		void meter(int E) {
+			NodoPil* aux = new NodoPil;
+			if (aux != NULL) {
+				aux->elemento = E;
+				aux->sig = tope;
+				tope = aux;
+			}
+		}
+
+		int sacar() {
+			if (!vacia()) {
+				NodoPil* x = tope;
+				int E = tope->elemento;
+				tope = tope->sig;
+				delete x;
+                return E;
+			}
+			return 0;
+		}
+
+		int cima() {
+			if (!vacia()) {
+				return tope->elemento;
+			}
+			return 0;
+        }
+};

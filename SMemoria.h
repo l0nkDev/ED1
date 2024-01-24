@@ -21,7 +21,7 @@ string operator*(const string& s, unsigned int n) {
 
 class SMemoria {
 	private:
-		static const int MAX = 300;
+		static const int MAX = 2000;
 		NodoM MEM[MAX+1];
 		int Libre;
 	public:
@@ -60,6 +60,7 @@ class SMemoria {
 					return Cadena.substr(i, j-i);
 				}
 			}
+			return "";
 		}
 
 		void Eliminar_flecha(string &cadena_id) {
@@ -72,7 +73,7 @@ class SMemoria {
 				MEM[i].ID = "";
 				MEM[i].link = i + 1;
 			}
-			MEM[MAX - 1].link = -1;
+			MEM[MAX].link = -1;
 			Libre = 0;
 		}
 
@@ -131,6 +132,11 @@ class SMemoria {
 				}
 				z = MEM[z].link;
 			}
+			return 0;
+		}
+
+		int obtener_dato(int dir) {
+			return MEM[dir].dato;
 		}
 
 		void poner_dato(int dir, string cadena_id, int valor) {
@@ -149,17 +155,16 @@ class SMemoria {
 			return c;
 		}
 
-		void mostrar() {
+		string mostrar() {
 			string space = " ";
 			string sdir;
 			string sdato;
 			string sid;
 			string slink;
-			system("CLS");
-			cout << "  | DIR |E|     DATO    |     ID      | LINK|\n";
-			cout << "  +-----+-+-------------+-------------+-----+\n";
-			for (int i = 0; i < MAX; i++) {
-				cout << "  |";
+			string out = "| DIR |E|     DATO    |     ID      | LINK|";
+			out += "+-----+-+-------------+-------------+-----+";
+			for (int i = 0; i <= MAX; i++) {
+				out += "|";
 
 				sdir = space*(2 - (to_string(i).length() / 2));
 				if (to_string(i).length() % 2 == 0) {
@@ -168,12 +173,12 @@ class SMemoria {
 				sdir += to_string(i);
 				sdir += space*(2 - (to_string(i).length() / 2)) + "|";
 
-				cout << sdir;
+				out += sdir;
 
 				if (dir_libre(i)) {
-					cout << " |";
+					out += " |";
 				} else {
-					cout << "O|";
+					out += "O|";
 				}
 
 				sdato = space*(6 - (to_string(MEM[i].dato).length() / 2));
@@ -200,9 +205,10 @@ class SMemoria {
 				slink += space*(2 - (to_string(MEM[i].link).length() / 2)) + "|";
 
 
-				cout << sdato << sid << slink << endl;
+				out += sdato + sid + slink;
 			}
-			cout << "  +-----+-+-------------+-------------+-----+\n";
-			cout << "LIBRE = " << Libre << "\n";
+			out += "+-----+-+-------------+-------------+-----+";
+			out += "LIBRE = " + to_string(Libre);
+			return out;
 		}
 };

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/12/04 09:27:18.000.740,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2023/12/04 09:27:18.000.712,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>2023/12/04 09:27:36.000.804,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Unit1.cpp=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2023/12/04 09:27:36.000.804,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Unit1.h=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.h</Transaction>
+    <Transaction>2023/12/04 09:27:36.000.804,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Unit1.dfm=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/12/04 09:28:29.000.284,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Matrices\PmatrizCF.h</Transaction>
+    <Transaction>2023/12/04 09:32:29.000.239,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Project3PCH1.h=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>2023/12/04 09:32:29.000.298,C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Project3.cbproj=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\Project3.cbproj</Transaction>
+    <Transaction>2023/12/04 15:00:49.000.088,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Matrices\Pmatriz1D.h</Transaction>
+    <Transaction>2023/12/04 17:17:42.000.430,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\Pilas\Ppila.h</Transaction>
+    <Transaction>2023/12/05 06:39:56.000.559,=C:\Users\La_PapuLAPTOP\Documents\ED1 Pro\SMemoria.h</Transaction>
+    <Transaction>2023/12/05 06:40:45.000.049,=C:\Users\La_PapuLAPTOP\Documents\ED1 Pro\Matrices\SMmatriz1D.h</Transaction>
+    <Transaction>2023/12/09 18:54:44.000.002,=C:\Users\l0nkd\OneDrive\Documentos\Embarcadero\Studio\Projects\ED1 Pro\juego.h</Transaction>
+  </Transactions>
+</BorlandProject>
